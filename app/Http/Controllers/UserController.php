@@ -34,12 +34,22 @@ class UserController extends Controller
 
         // DB::delete('delete from users where id=1');
 
-        User::where('id', 3)->update(['name' => 'Tyrion']);
+        // User::where('id', 3)->update(['name' => 'Tyrion']);
+
+        
+
+        // // $users = DB::select('select * from users');
+
+
+        $data = [
+            'name' => 'Sansha',
+            'email' => 'sansha@gmil.com',
+            'password' => 'sansha123'
+        ];
+
+        // User::create($data);
 
         $user = User::all();
-
-        // $users = DB::select('select * from users');
-
         return $user;
 
         return view('home');

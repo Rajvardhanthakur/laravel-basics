@@ -36,4 +36,22 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /** Mutator => It mutates or changes 
+     * the behavior of the field we defined
+     * in here
+     */
+    public function setPasswordAttribute($password){
+        $this->attributes['password'] = bcrypt($password);
+    }
+
+    /** Accessor
+     * It modified the data after getting the data
+     * from database. but that change dosen't
+     * reflect on the database
+     */
+    public function getNameAttribute($name){
+        
+        return lcfirst($name);
+    }
 }
