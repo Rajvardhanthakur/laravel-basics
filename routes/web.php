@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
+use Illuminate\Http\Request;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,6 +19,13 @@ Route::get('/', function () {
 });
 
 Route::get('/user', 'UserController@index');
+
+Route::post('/upload', function(Request $request){
+    //dd($request->file('image'));
+
+    $request->image->store('images', 'public');
+    return 'uploadedd';
+});
 
 Auth::routes();
 
