@@ -20,12 +20,7 @@ Route::get('/', function () {
 
 Route::get('/user', 'UserController@index');
 
-Route::post('/upload', function(Request $request){
-    //dd($request->file('image'));
-
-    $request->image->store('images', 'public');
-    return 'uploadedd';
-});
+Route::post('/upload', 'UserController@uploadAvatar');
 
 Auth::routes();
 
