@@ -15,11 +15,14 @@ use Illuminate\Http\Request;
 */
 
 
-Route::get('/todo', 'TodoController@index');
+Route::get('/todos', 'TodoController@index');
 
-Route::get('/create', 'TodoController@create');
+Route::get('/todos/create', 'TodoController@create');
 
-Route::get('/edit', 'TodoController@edit');
+Route::post('/todos/create', 'TodoController@store');
+
+Route::get('/todos/edit', 'TodoController@edit');
+
 
 
 Route::get('/', function () {
