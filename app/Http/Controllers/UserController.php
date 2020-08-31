@@ -11,25 +11,22 @@ use Illuminate\Support\Facades\Storage;
 use App\User;
 
 class UserController extends Controller
-{
+{  
 
     public function uploadAvatar(Request $request){
 
         if($request->hasFile('image')){
-            $filename = $request->image->getClientOriginalName();
-
-            if(auth()->user()->avatar){
-                Storage::delete('/public/images/'.auth()->user()->avatar);
-            }
-
-            $request->image->storeAs('images', $filename, 'public');
-            auth()->user()->update(['avatar'=>$filename]);
-        
+            User::uploadAvatar($request->image);
+            ///$request->session()->flash('message', 'Image Uploaded');
+            return redirect()->back()->with('message', 'Image Uploaded');
         }
+        
+        //$request->session()->flash('error', 'Image is not uploaded');
 
-        return redirect()->back();
+        return redirect()->back()->with('error', 'Image is not uploaded');
 
     }
+
 
     public function index(){
 
