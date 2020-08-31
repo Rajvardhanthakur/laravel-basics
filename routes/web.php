@@ -14,6 +14,14 @@ use Illuminate\Http\Request;
 |
 */
 
+
+Route::get('/todo', 'TodoController@index');
+
+Route::get('/create', 'TodoController@create');
+
+Route::get('/edit', 'TodoController@edit');
+
+
 Route::get('/', function () {
     return view('welcome');
 });
